@@ -1,19 +1,19 @@
 # AI Travel Assistant API
 
-**Sinh viên thực hiện:** Nguyễn Minh Trọng
-**Mã số sinh viên:** 24120233
-**Lớp - Môn học:** 24CTT5 - Tư duy tính toán 
-**Giảng viên hướng dẫn:** Lê Đức Khoan
+* **Sinh viên thực hiện:** Nguyễn Minh Trọng
+* **Mã số sinh viên:** 24120233
+* **Lớp - Môn học:** 24CTT5 - Tư duy tính toán
+* **Giảng viên hướng dẫn:** Lê Đức Khoan
 
 ---
 
 ## 1. Mô hình Hugging Face
 * **Tên mô hình:** `Qwen/Qwen2.5-3B-Instruct`
 * **Loại bài toán:** Sinh văn bản (Text Generation)
-* **Link Hugging Face:** [Link tới mô hình](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)
+* **Link Hugging Face:** [Link](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)
 
 ## 2. Giới thiệu Dự án
-Dự án này là một hệ thống Web API được xây dựng bằng **FastAPI** từ mô hình Học Máy open source trên Hugging Face. Chức năng chính là xử lý và tạo sinh các đoạn văn bản cho các câu hỏi liên quan đến du lịch như một chuyên gia du lịch. Có áp dụng các system prompt để câu trả lời đúng format đoạn văn, và chống ảo giác với các câu hỏi sai sự thật.
+Dự án này là một hệ thống Web API được xây dựng bằng **FastAPI** từ mô hình Học Máy open source trên **Hugging Face**. Chức năng chính là xử lý và tạo sinh các đoạn văn bản cho các câu hỏi liên quan đến du lịch như một chuyên gia du lịch. Có áp dụng các **system prompt** để câu trả lời đúng format đoạn văn, và chống ảo giác với các câu hỏi sai sự thật.
 
 ## 3. Cấu trúc Source Code
 * `config.yaml`: File cấu hình lưu đường dẫn model.
@@ -39,16 +39,20 @@ Mở terminal khác cùng thư mục và chạy lệnh:
 py test_api.py
 ```
 ### Cách 2. Chạy trên Google Colab
-**Bước 1:** Tải file notebook `TextGenerateTravel_api_model.ipynb` lên Google Colab.
+**Bước 1: Tải file notebook** `TextGenerateTravel_api_model.ipynb` lên Google Colab.
+
 **Bước 2: Cấp phát phần cứng**
 Vào menu **Runtime** > **Change runtime type** > Chọn **T4 GPU** và lưu lại.
+
 **Bước 3: Cài đặt và Khởi tạo**
 Chạy tuần tự các ô code từ trên xuống dưới để cài đặt thư viện và tự động tạo các file cấu hình hệ thống.
-**Bước 4: Bật Server và Mở đường hầm (Tunneling)**
-Chạy ô code khởi động Server chạy ngầm. Đợi model load xong thì mở terminal lên và chạy lệnh 'ssh -p 443 -R0:localhost:8000 qr@a.pinggy.io' để mở port qua **Pinggy**. Hệ thống sẽ in ra một đường link Public (Ví dụ: `https://xudap-34-21-180-83.run.pinggy-free.link`).
+
+**Bước 4: Bật Server và Mở đường hầm Pinggy**
+Chạy ô code khởi động Server chạy ngầm. Đợi model load xong thì mở terminal lên và chạy lệnh `ssh -p 443 -R0:localhost:8000 qr@a.pinggy.io` để mở port qua **Pinggy**. Hệ thống sẽ in ra một đường link Public (Ví dụ: `https://xudap-34-21-180-83.run.pinggy-free.link`).
+
 **Bước 5: Kiểm thử API**
 Có 2 cách để gọi thử API:
-- **Chạy trực tiếp trên local colab** API_URL = "http://127.0.0.1:8000"
+- **Chạy trực tiếp trên local colab** `API_URL = "http://127.0.0.1:8000"`
 - **Chạy trên Public API** Copy đường link Pinggy ở Bước 4, dán vào biến `API_URL` sau đó bấm chạy.
 
 ## 5. Hướng dẫn gọi API
@@ -99,8 +103,9 @@ Dùng để gửi câu hỏi du lịch và nhận về đoạn văn bản do AI 
   ```json
   {
       "input_prompt": "Nội thành Huế có gì thu hút khách du lịch.",
-      "generated_text": " ",
+      "generated_text": "Nội thành Huế thu hút khách du lịch với nhiều di tích lịch sử quan trọng như Kinh thành Huế, Hoàng Thành, các đền chùa như Đền Mẫu Tam Thanh, Đền thờ vua Khải Định. Ngoài ra, con đường Nguyễn Văn Cừ chạy dọc qua nội thành còn nổi tiếng với những hàng quán ẩm thực đặc trưng của Huế.",
   }
   ```
 
 ## 6. Link video demo: 
+[![Video Demo](https://img.youtube.com/vi/mEk6ql5blus/maxresdefault.jpg)](https://www.youtube.com/watch?v=mEk6ql5blus)
